@@ -1,0 +1,11 @@
+---
+- name: "Verify"
+  hosts: "all"
+  tasks:
+    - name: "Check that Zammad web interface is available"
+      ansible.builtin.uri:
+        url: "https://localhost"
+        validate_certs: false
+        return_content: true
+      register: "zammad_web"
+      failed_when: "'Zammad Helpdesk' not in zammad_web.content"

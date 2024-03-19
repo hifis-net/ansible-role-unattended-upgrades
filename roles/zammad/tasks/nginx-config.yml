@@ -1,0 +1,12 @@
+---
+
+- name: "Nginx | Create config"
+  ansible.builtin.template:
+    src: "nginx-zammad.conf.j2"
+    dest: "{{ zammad_nginx_config_path }}"
+    mode: "0644"
+    owner: "root"
+    group: "root"
+  notify: "Reload nginx"
+
+...
